@@ -2,12 +2,14 @@
  * Providers provided by Angular
  */
 import { bootstrap } from '@angular/platform-browser-dynamic';
+import { HTTP_PROVIDERS } from '@angular/http';
 /*
 * Platform and Environment
 * our providers/directives/pipes
 */
 import { DIRECTIVES, PIPES, PROVIDERS } from './platform/browser';
 import { ENV_PROVIDERS } from './platform/environment';
+
 
 /*
 * App Component
@@ -22,6 +24,7 @@ import { App, APP_PROVIDERS } from './app';
 export function main(initialHmrState?: any): Promise<any> {
 
   return bootstrap(App, [
+    HTTP_PROVIDERS,
     ...PROVIDERS,
     ...ENV_PROVIDERS,
     ...DIRECTIVES,

@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 
+import { Http, Headers } from '@angular/http';
+
 import { AppState } from '../app.service';
 import { Title } from './title';
 import { XLarge } from './x-large';
@@ -33,10 +35,7 @@ export class Home {
 
   }
 
-  ngOnInit() {
-    console.log('hello `Home` component');
-    // this.title.getData().subscribe(data => this.data = data);
-  }
+  ngOnInit() {}
 
   submitState(value) {
     console.log('submitState', value);

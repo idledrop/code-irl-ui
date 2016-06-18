@@ -24,7 +24,6 @@ import { App, APP_PROVIDERS } from './app';
 export function main(initialHmrState?: any): Promise<any> {
 
   return bootstrap(App, [
-    HTTP_PROVIDERS,
     ...PROVIDERS,
     ...ENV_PROVIDERS,
     ...DIRECTIVES,

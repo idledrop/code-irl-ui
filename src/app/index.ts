@@ -3,10 +3,11 @@ export * from './app.component';
 export * from './app.service';
 
 import { AppState } from './app.service';
-import { TagService } from './shared';
+import { TagService, CodeService } from './shared';
 
 // Application wide providers
 export const APP_PROVIDERS = [
   AppState,
-  TagService
+  TagService,
+  CodeService
 ];

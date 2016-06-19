@@ -1,0 +1,12 @@
+<md-card>
+  <md-card-title>Comments</md-card-title>
+  <md-input placeholder="Name" [(ngModel)]="newComment.name"></md-input>
+  <textarea placeholder="Comments" [(ngModel)]="newComment.comment"></textarea>
+
+  <md-list *ngIf="comments && comments.length > 0 ">
+    <md-list-item *ngFor="let comment of comments">
+      <p md-line>{{comment.comment}}</p>
+      <p md-line>{{comment.name}}</p>
+    </md-list-item>
+  </md-list>
+</md-card>

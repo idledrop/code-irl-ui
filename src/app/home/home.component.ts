@@ -41,11 +41,11 @@ export class Home {
     this.tags = this.tagControl.valueChanges
       .debounceTime(500)
       .distinctUntilChanged()
-      .switchMap(tagName => this.tagService.getTags(tagName), (outer, inner) => {
-        if (outer === "") {
-          return [];
+      .switchMap(tagName => {
+        if (tagName === "") {
+          return Observable.of([]);
         } else {
-          return inner;
+          return this.tagService.getTags(tagName);
         }
       });
   }

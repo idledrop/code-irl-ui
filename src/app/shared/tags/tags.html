@@ -9,9 +9,12 @@
         style="margin:5px;">
     {{tag.name}}
 </button>
-<md-card-title style="margin-top:10px;">Selected Tags</md-card-title>
+<md-card-title-group>
+    <md-card-title style="margin-top:10px;">Selected Tags</md-card-title>
+    <md-card-subtitle>Click to remove</md-card-subtitle>
+</md-card-title-group>
 <h4 *ngIf="!tagList.tags$.value || tagList.tags$.value.length === 0">None</h4>
-<button md-raised-button color="primary"
+<button md-raised-button color="accent"
         *ngFor="let selected of tagList.tags$ | async"
         (click)="tagList.removeTag(selected.id)"
         style="margin:5px;">

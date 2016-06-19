@@ -1,15 +1,17 @@
 <div class="card-container">
-  <form>
-    <md-card>
-      <md-card-title>Code Info</md-card-title>
-      <md-card-content>
-        <md-input [(ngModel)]="code.url" placeholder="Code Url"></md-input>
-      </md-card-content>
-    </md-card>
-    <md-card>
-      <md-card-title>Code Tags</md-card-title>
-      <tags [tagList]="tagList"></tags>
-      <button md-raised-button type="submit" color="primary" (click)="addCode()">Submit</button>
-    </md-card>
-  </form>
+    <form>
+        <md-card>
+            <md-card-title>Code Info</md-card-title>
+            <md-card-content>
+                <md-input [(ngModel)]="code.url" placeholder="Code Url"></md-input>
+            </md-card-content>
+        </md-card>
+        <md-card>
+            <md-card-title>Code Tags</md-card-title>
+            <tags [tagList]="tagList"></tags>
+            <div style="margin-top:5px; border-top: 1px solid; padding-top:15px;">
+                <button md-raised-button type="submit" color="primary" (click)="addCode()">Submit</button>
+            </div>
+        </md-card>
+    </form>
 </div>

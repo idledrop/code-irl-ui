@@ -2,11 +2,15 @@
   <md-card-title>Comments</md-card-title>
   <md-input placeholder="Name" [(ngModel)]="newComment.name"></md-input>
   <textarea placeholder="Comments" [(ngModel)]="newComment.comment"></textarea>
+  <button md-raised-button color="primary" (click)="addComment()">Submit</button>
 
   <md-list *ngIf="comments && comments.length > 0 ">
-    <md-list-item *ngFor="let comment of comments">
-      <p md-line>{{comment.comment}}</p>
-      <p md-line>{{comment.name}}</p>
-    </md-list-item>
+    <div *ngFor="let comment of comments">
+      <md-divider></md-divider>
+      <md-list-item >
+        <p md-line>{{comment.comment}}</p>
+        <p md-line>{{comment.name}}</p>
+      </md-list-item>
+    </div>
   </md-list>
 </md-card>

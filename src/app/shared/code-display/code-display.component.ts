@@ -39,10 +39,6 @@ export class CodeDisplayComponent implements OnInit {
         return this.url.substr(lastSlashIndex+1);
     }
 
-    prettify(text){
-
-    }
-
     ngOnInit() {
         this.codeDisplayService.getRawFile(this.url)
             .subscribe((rawCode) => {

@@ -58,7 +58,7 @@ export class CustomHttpService {
 
   private extractData(res){
     let body = res.json();
-    return body.data || {};
+    return body;
   }
 
   private handleError(error){

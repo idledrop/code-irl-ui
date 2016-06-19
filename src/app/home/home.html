@@ -1,9 +1,5 @@
 <div class="card-container">
-  <md-card x-large class="sample-content">Your Content Here</md-card>
-  <md-card>
-    For hot module reloading run
-    <pre>npm run start:hmr</pre>
-  </md-card>
+  <md-card x-large class="sample-content">Code Search</md-card>
   <md-card>
     <md-card-title>Local State</md-card-title>
     <md-card-content>
@@ -12,11 +8,13 @@
 
         <md-input
           placeholder="Submit Local State to App State"
-          [value]="localState.value"
-          (input)="localState.value = $event.target.value"
+          [ngFormControl]="tagControl"
+          list="tagResults"
           autofocus>
         </md-input>
-
+        <datalist id="tagResults">
+          <option *ngFor="let tag of tags | async" [value]="tag.id">{{tag.name}}</option>
+        </datalist>
         <button md-raised-button color="primary">Submit Value</button>
       </form>
       <!--
@@ -25,8 +23,6 @@
         we can use Angular's [(ngModel)] syntax
         <input type="text" [(ngModel)]="localState.value" autofocus>
       -->
-
-      <pre>this.localState = {{ localState | json }}</pre>
 
     </md-card-content>
   </md-card>

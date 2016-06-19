@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs/Rx';
 
 import { CustomHttpService } from '../.';
 
@@ -8,8 +9,8 @@ export class TagService {
 
   constructor(private customHttpService:CustomHttpService) {}
 
-  getTags(tagName:string){
-    return this.customHttpService.getAllRequest(this.tagsUrl, {name:tagName});
+  getTags(tagName?:string): Observable<any[]>{
+    return this.customHttpService.getAllRequest(this.tagsUrl, {search:tagName});
   }
 
   postTag(tagName:string){

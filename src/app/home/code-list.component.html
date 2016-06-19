@@ -2,11 +2,11 @@
   <md-card-title>List of Code</md-card-title>
   <md-list>
     <md-list-item *ngFor="let code of codeList | async" (click)="goToTheCode(code)">
-      <h3 md-line>{{getFileName(code)}}</h3>
+      <div md-line><h3 style="display:inline;">{{getRepo(code)}}</h3> -- {{getFileName(code)}}</div>
       <div md-line>
         <button md-raised-button color="primary" *ngFor="let tag of code.tags">{{tag.name}}</button>
         <md-text *ngIf="!code.tags" style="color:gray;">No tags</md-text>
-      </div>    
+      </div>
     </md-list-item>
   </md-list>
 </md-card>

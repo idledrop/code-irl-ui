@@ -34,8 +34,15 @@ export class CodeListComponent implements OnInit {
     }
 
     getFileName(code) {
-        var lastSlashIndex = code.url.lastIndexOf(/blob\//);
-        return code.url.substr(lastSlashIndex + 1);
+        let regex = /^(.*?)\/blob\/[^\/]*?\/(.*?)$/;
+        var match = code.url.match(regex);
+        return match[2];
+    }
+
+    getRepo(code) {
+        let regex = /^https:\/\/github.com\/(.*?\/.*?)\/blob\//;
+        var match = code.url.match(regex);
+        return match[1];
     }
 
     goToTheCode(code) {

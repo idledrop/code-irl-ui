@@ -1,30 +1,18 @@
 <div class="card-container">
-  <md-card x-large class="sample-content">Code Search</md-card>
-  <md-card>
-    <md-card-title>Local State</md-card-title>
-    <md-card-content>
+    <md-card x-large class="sample-content">Code Search</md-card>
+    <md-card>
+        <md-card-title>Select Tags</md-card-title>
+        <md-card-content>
+            <tags></tags>
+            <!--
+              <input type="text" [value]="localState.value" (input)="localState.value = $event.target.value" autofocus>
+              Rather than wiring up two-way data-binding ourselves with [value] and (input)
+              we can use Angular's [(ngModel)] syntax
+              <input type="text" [(ngModel)]="localState.value" autofocus>
+            -->
 
-      <form autocomplete="off">
+	  <code-list [tagList]="tagList"></code-list>
+        </md-card-content>
+    </md-card>
 
-        <md-input
-          placeholder="Submit Local State to App State"
-          [ngFormControl]="tagControl"
-          [(ngModel)]="tagName"
-          autofocus>
-        </md-input>
-        <ul id="tagResults">
-          <li *ngFor="let tag of tags | async" (click)="addTag(tag)">{{tag.name}}</li>
-        </ul>
-        <button md-raised-button color="primary">Submit Value</button>
-      </form>
-      <!--
-        <input type="text" [value]="localState.value" (input)="localState.value = $event.target.value" autofocus>
-        Rather than wiring up two-way data-binding ourselves with [value] and (input)
-        we can use Angular's [(ngModel)] syntax
-        <input type="text" [(ngModel)]="localState.value" autofocus>
-      -->
-
-    </md-card-content>
-  </md-card>
-  <code-list [tagList]="tagList"></code-list>
 </div>

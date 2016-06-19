@@ -55,10 +55,8 @@ import { RouterActive } from './router-active';
   // { path: '/about', name: 'About', loader: () => require('es6-promise!./about')('About') }
 ])
 export class App {
-  angularclassLogo = 'assets/img/angularclass-avatar.png';
   loading = false;
-  name = 'Angular 2 Webpack Starter';
-  url = 'https://twitter.com/AngularClass';
+  name = 'Code IRL';
 
   constructor(
     public appState: AppState) {

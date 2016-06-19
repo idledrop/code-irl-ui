@@ -23,7 +23,8 @@ import { Observable } from 'rxjs/Rx';
     template: require('./code-display.html')
 })
 export class CodeDisplayComponent implements OnInit {
-    @Input()url: string;
+
+    @Input() url: string;
 
     rawCode$: Observable<string>;
 

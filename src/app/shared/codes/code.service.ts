@@ -17,6 +17,10 @@ export class CodeService {
     return this.customHttpService.getRequest([...this.codesUrl, id.toString()]);
   }
 
+  postCode(payload:any){
+    return this.customHttpService.postRequest(this.codesUrl, payload);
+  }
+
   getCodeTags(codeId:number){
     return this.customHttpService.getAllRequest(this.getCodeTagsUrl(codeId));
   }
@@ -30,7 +34,7 @@ export class CodeService {
   }
 
   addCodeTags(codeId:number, tags:any[]){
-    return this.customHttpService.postRequest(this.getCodeTagsUrl(codeId), tags);
+    return this.customHttpService.postRequest(this.getCodeTagsUrl(codeId), {tag_ids:tags});
   }
 
   deleteCodeTags(codeId:number, tagId:number){

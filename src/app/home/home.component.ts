@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Control, FORM_DIRECTIVES } from '@angular/common'
+import { Control } from '@angular/common'
 import { CodeListComponent } from './'
 import { TagService, TagList, TagsComponent } from '../shared'
 
@@ -27,8 +27,7 @@ import { XLarge } from './x-large';
     directives: [
         TagsComponent,
         CodeListComponent,
-        XLarge,
-        FORM_DIRECTIVES
+        XLarge
     ],
     // We need to tell Angular's compiler which custom pipes are in our template.
     pipes: [],

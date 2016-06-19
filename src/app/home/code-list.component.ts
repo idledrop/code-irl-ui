@@ -33,6 +33,11 @@ export class CodeListComponent implements OnInit {
         this.showEmptyMessage = this.showList.map(showList => !showList);
     }
 
+    getFileName(code) {
+        var lastSlashIndex = code.url.lastIndexOf(/blob\//);
+        return code.url.substr(lastSlashIndex + 1);
+    }
+
     goToTheCode(code) {
         this.router.navigate(['CodeDetail', { id: code.id }]);
     }

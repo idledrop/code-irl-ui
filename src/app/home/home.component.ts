@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { Control, FORM_DIRECTIVES } from '@angular/common'
+
+import { CodeListComponent } from './'
 import { TagService, TagList } from '../shared'
 
 import { Observable } from 'rxjs/Rx';
@@ -21,7 +23,8 @@ import { XLarge } from './x-large';
   // Doing so will allow Angular to attach our behavior to an element
   directives: [
     XLarge,
-    FORM_DIRECTIVES
+    FORM_DIRECTIVES,
+    CodeListComponent
   ],
   // We need to tell Angular's compiler which custom pipes are in our template.
   pipes: [ ],

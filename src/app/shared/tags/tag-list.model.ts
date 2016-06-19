@@ -15,6 +15,11 @@ export class TagList{
   }
 
   addTag(tag:any){
+    if (this.tags.some(t => t.id === tag.id)) {
+      alert("you already added that one, dummy!")
+      return;
+    }
+
     this.tags.push(tag);
     this.tags$.next(this.tags);
   }

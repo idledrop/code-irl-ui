@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Control, FORM_DIRECTIVES } from '@angular/common'
-import { TagService } from '../shared'
+import { TagService, TagList } from '../shared'
 
 import { Observable } from 'rxjs/Rx';
 
@@ -33,15 +33,25 @@ import { XLarge } from './x-large';
 export class Home {
   // Set our default values
   // TypeScript public modifiers
+  tagName:string;
   tagControl = new Control();
   tags:Observable<any>;
+  tagList = new TagList();
   constructor(public appState: AppState, public title: Title, private tagService: TagService) {
     this.tags = this.tagControl.valueChanges
       .debounceTime(500)
       .distinctUntilChanged()
-      .switchMap(tagName => this.tagService.getTags(tagName))
-      
+      .switchMap(tagName => this.tagService.getTags(tagName), (outer, inner) => {
+        if (outer === "") {
+          return [];
+        } else {
+          return inner;
+        }
+      });
   }
 
-  ngOnInit() {}
+  addTag(tag){
+    this.tagName = "";
+    this.tagList.addTag(tag);
+  }
 }

@@ -4,17 +4,17 @@
     <md-card-title>Local State</md-card-title>
     <md-card-content>
 
-      <form (ngSubmit)="submitState(localState.value)" autocomplete="off">
+      <form autocomplete="off">
 
         <md-input
           placeholder="Submit Local State to App State"
           [ngFormControl]="tagControl"
-          list="tagResults"
+          [(ngModel)]="tagName"
           autofocus>
         </md-input>
-        <datalist id="tagResults">
-          <option *ngFor="let tag of tags | async" [value]="tag.id">{{tag.name}}</option>
-        </datalist>
+        <ul id="tagResults">
+          <li *ngFor="let tag of tags | async" (click)="addTag(tag)">{{tag.name}}</li>
+        </ul>
         <button md-raised-button color="primary">Submit Value</button>
       </form>
       <!--

@@ -1,5 +1,5 @@
 <md-card *ngIf="showList |async ">
-  <md-card-title>List of Code</md-card-title>
+  <md-card-title>Matching Code Examples</md-card-title>
   <md-list>
     <md-list-item *ngFor="let code of codeList | async" (click)="goToTheCode(code)">
       <div md-line><h3 style="display:inline;">{{getRepo(code)}}</h3> -- {{getFileName(code)}}</div>

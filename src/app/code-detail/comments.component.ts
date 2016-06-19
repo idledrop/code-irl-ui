@@ -21,7 +21,10 @@ export class CommentsComponent implements OnInit {
 
   addComment(){
     this.codeService.addComment(this.codeId, this.newComment)
-      .subscribe(comment => this.comments.push(comment));
+      .subscribe(comment => {
+        this.newComment = {};
+        this.comments.push(comment);
+      });
   }
 
 }

@@ -5,6 +5,8 @@ import { CodeDisplayService } from '../';
 
 import * as hljs from 'highlight.js';
 
+import { HangoutsComponent } from './';
+
 import { Observable } from 'rxjs/Rx';
 
 @Component({
@@ -15,7 +17,8 @@ import { Observable } from 'rxjs/Rx';
     // We need to tell Angular's compiler which directives are in our template.
     // Doing so will allow Angular to attach our behavior to an element
     directives: [
-        FORM_DIRECTIVES
+        FORM_DIRECTIVES,
+        HangoutsComponent
     ],
     // We need to tell Angular's compiler which custom pipes are in our template.
     pipes: [],

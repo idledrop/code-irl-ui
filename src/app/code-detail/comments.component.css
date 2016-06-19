@@ -3,3 +3,12 @@ textarea {
   height:10em;
   resize: none;
 }
+
+[md-list-item]{
+  padding-top:20px;
+}
+
+p.comment{
+  font-size:1.5rem;
+  padding-bottom:10px;
+}

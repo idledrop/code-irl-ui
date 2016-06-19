@@ -1,0 +1,5 @@
+﻿<md-card-title>{{getFileName()}}</md-card-title>
+<a md-raised-button href="{{url}}" target="_blank">Original Page</a>
+<md-card>
+    <pre class="raw-github-text">{{rawCode$ | async}}</pre>
+</md-card>

@@ -10,7 +10,7 @@ export class CodeService {
   constructor(private customHttpService:CustomHttpService) { }
 
   getAllCodes(tagIds:any[]):Observable<any[]>{
-    return this.customHttpService.getAllRequest(this.codesUrl, {tagIds:tagIds.join(',')});
+    return this.customHttpService.getAllRequest(this.codesUrl, {tags:tagIds.join(',')});
   }
 
   getCode(id:number){

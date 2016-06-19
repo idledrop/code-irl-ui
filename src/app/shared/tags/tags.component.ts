@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Control, FORM_DIRECTIVES } from '@angular/common'
 import { TagService, TagList } from '../'
 
@@ -27,7 +27,9 @@ export class TagsComponent {
     tagName: string;
     tagSearchControl = new Control();
     tags: Observable<any>;
-    tagList = new TagList();
+    @Input() tagList:TagList;
+    
+
     constructor(private tagService: TagService) {
         this.tags = this.tagSearchControl.valueChanges
             .debounceTime(100)

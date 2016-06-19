@@ -3,6 +3,8 @@ import { Control, FORM_DIRECTIVES } from '@angular/common'
 
 import { CodeDisplayService } from '../';
 
+import * as hljs from 'highlight.js';
+
 import { Observable } from 'rxjs/Rx';
 
 @Component({
@@ -18,7 +20,7 @@ import { Observable } from 'rxjs/Rx';
     // We need to tell Angular's compiler which custom pipes are in our template.
     pipes: [],
     // Our list of styles in our component. We may add more to compose many styles together
-    styles: [require("./code-display.css")],
+    styles: [require("./code-display.css"), require('highlight.js/styles/default.css')],
     // Every Angular template is first compiled by the browser before Angular runs it's compiler
     template: require('./code-display.html')
 })
@@ -26,7 +28,7 @@ export class CodeDisplayComponent implements OnInit {
 
     @Input() url: string;
 
-    rawCode$: Observable<string>;
+    rawCode:string;
 
     constructor(private codeDisplayService: CodeDisplayService) {
 
@@ -37,7 +39,18 @@ export class CodeDisplayComponent implements OnInit {
         return this.url.substr(lastSlashIndex+1);
     }
 
+    prettify(text){
+
+    }
+
     ngOnInit() {
-        this.rawCode$ = this.codeDisplayService.getRawFile(this.url);
+        this.codeDisplayService.getRawFile(this.url)
+            .subscribe((rawCode) => {
+                this.rawCode = rawCode;
+                let codeBlock = document.getElementById('codeBlock');
+                console.log(codeBlock);
+                console.log(hljs);
+                window.setTimeout(_ => {console.log(codeBlock); hljs.highlightBlock(codeBlock);}, 10 );
+            }) 
     }
 }

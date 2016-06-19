@@ -1,10 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { RouteParams, Router } from '@angular/router-deprecated';
-import { CodeService } from '../shared';
+import { CodeService, CodeDisplayComponent } from '../shared';
 
 @Component({
     selector: 'code-detail',
-    template: require('./code-detail.component.html')
+    template: require('./code-detail.component.html'),
+    directives: [CodeDisplayComponent]
+
 })
 export class CodeDetailComponent implements OnInit {
 

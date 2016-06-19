@@ -1,5 +1,7 @@
 <div class="card-container">
-    <md-card>
+    <md-card *ngIf="code">
+
+        <code-display [url]="code.url"></code-display>
 
     </md-card>
 </div>

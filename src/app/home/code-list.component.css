@@ -1,0 +1,17 @@
+h3[md-line]{
+  font-size:1.4rem;
+  padding-bottom:0.6rem;
+}
+
+div[md-list-item]{
+  border-top:1px solid lightgrey;
+}
+
+[md-raised-button]{
+  cursor: auto;
+  margin-right:10px;
+}
+
+md-text{
+  font-size:1.2rem;
+}

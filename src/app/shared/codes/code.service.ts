@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
 
+import { Observable } from 'rxjs/Rx';
+
 import { CustomHttpService } from '../.';
 
 @Injectable()
@@ -7,8 +9,8 @@ export class CodeService {
   private codesUrl:string[] = ['codes'];
   constructor(private customHttpService:CustomHttpService) { }
 
-  getAllCodes(tagIds:any[]){
-    return this.customHttpService.getAllRequest(this.codesUrl, {tagIds:tagIds.join(',')});
+  getAllCodes(tagIds:any[]):Observable<any[]>{
+    return this.customHttpService.getAllRequest(this.codesUrl, {tags:tagIds.join(',')});
   }
 
   getCode(id:number){

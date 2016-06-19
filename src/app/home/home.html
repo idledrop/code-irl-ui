@@ -3,15 +3,14 @@
     <md-card>
         <md-card-title>Select Tags</md-card-title>
         <md-card-content>
-            <tags></tags>
+            <tags [tagList]="tagList"></tags>
             <!--
               <input type="text" [value]="localState.value" (input)="localState.value = $event.target.value" autofocus>
               Rather than wiring up two-way data-binding ourselves with [value] and (input)
               we can use Angular's [(ngModel)] syntax
               <input type="text" [(ngModel)]="localState.value" autofocus>
             -->
-
         </md-card-content>
     </md-card>
-
+    <code-list [tagList]="tagList"></code-list>
 </div>

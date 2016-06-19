@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Control, FORM_DIRECTIVES } from '@angular/common'
+import { CodeListComponent } from './'
 import { TagService, TagList, TagsComponent } from '../shared'
 
 import { Observable } from 'rxjs/Rx';
@@ -9,6 +10,10 @@ import { Title } from './title';
 import { XLarge } from './x-large';
 
 @Component({
+  // The selector is what angular internally uses
+  // for `document.querySelectorAll(selector)` in our index.html
+  // where, in this case, selector is the string 'home'
+
     // The selector is what angular internally uses
     // for `document.querySelectorAll(selector)` in our index.html
     // where, in this case, selector is the string 'home'
@@ -21,6 +26,7 @@ import { XLarge } from './x-large';
     // Doing so will allow Angular to attach our behavior to an element
     directives: [
         TagsComponent,
+        CodeListComponent,
         XLarge,
         FORM_DIRECTIVES
     ],
@@ -32,6 +38,7 @@ import { XLarge } from './x-large';
     template: require('./home.html')
 })
 export class Home {
+    tagList = new TagList()
     // Set our default values
     // TypeScript public modifiers
 }

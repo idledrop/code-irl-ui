@@ -1,46 +1,36 @@
 import { Component } from '@angular/core';
 import { Control, FORM_DIRECTIVES } from '@angular/common'
-import { TagService, TagList, TagsComponent } from '../shared'
+import { TagService, TagList } from '../'
 
 import { Observable } from 'rxjs/Rx';
-
-import { AppState } from '../app.service';
-import { Title } from './title';
-import { XLarge } from './x-large';
 
 @Component({
     // The selector is what angular internally uses
     // for `document.querySelectorAll(selector)` in our index.html
     // where, in this case, selector is the string 'home'
-    selector: 'home',  // <home></home>
-    // We need to tell Angular's Dependency Injection which providers are in our app.
-    providers: [
-        Title
-    ],
+    selector: 'tags',
     // We need to tell Angular's compiler which directives are in our template.
     // Doing so will allow Angular to attach our behavior to an element
     directives: [
-        TagsComponent,
-        XLarge,
         FORM_DIRECTIVES
     ],
     // We need to tell Angular's compiler which custom pipes are in our template.
     pipes: [],
     // Our list of styles in our component. We may add more to compose many styles together
-    styles: [require('./home.css')],
+    styles: [require('./tags.css')],
     // Every Angular template is first compiled by the browser before Angular runs it's compiler
-    template: require('./home.html')
+    template: require('./tags.html')
 })
-export class Home {
+export class TagsComponent {
     // Set our default values
     // TypeScript public modifiers
     tagName: string;
-    tagControl = new Control();
+    tagSearchControl = new Control();
     tags: Observable<any>;
     tagList = new TagList();
-    constructor(public appState: AppState, public title: Title, private tagService: TagService) {
-        this.tags = this.tagControl.valueChanges
-            .debounceTime(500)
+    constructor(private tagService: TagService) {
+        this.tags = this.tagSearchControl.valueChanges
+            .debounceTime(100)
             .distinctUntilChanged()
             .switchMap(tagName => {
                 if (tagName === "") {

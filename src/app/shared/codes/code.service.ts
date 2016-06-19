@@ -42,7 +42,21 @@ export class CodeService {
     return this.customHttpService.deleteRequest(path); 
   }
 
+  getAllComments(codeId:number){
+    let path = [...this.getCodeCommentsUrl(codeId)];
+    return this.customHttpService.getAllRequest(path);
+  }
+
+  addComment(codeId:number, comment:any){
+    let path = [...this.getCodeCommentsUrl(codeId)];
+    return this.customHttpService.postRequest(path, comment);
+  }
+
+  private getCodeCommentsUrl(codeId:number){
+    return [...this.codesUrl, codeId.toString(), 'comments'];
+  }
+
   private getCodeTagsUrl(codeId:number){
-    return [...this.codesUrl, codeId.toString(), 'tags']
+    return [...this.codesUrl, codeId.toString(), 'tags'];
   }
 }

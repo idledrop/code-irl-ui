@@ -1,7 +1,20 @@
-<div class="card-container">
-    <md-card *ngIf="code">
-
+<div class="card-container" *ngIf="code">
+    <md-card>
         <code-display [url]="code.url"></code-display>
-
     </md-card>
+    <md-card>
+        <md-card-title>Tags</md-card-title>
+        <md-list *ngIf="tags && tags.length > 0">
+          <md-list-item *ngFor="let tag of tags">
+            <button md-raised-button color="primary">{{tag.name}}</button>
+          </md-list-item>
+        </md-list>
+        <md-content *ngIf="!tags || tags.length === 0">
+            No tags for his code.
+        </md-content>
+    </md-card>
+    <md-card>
+      <code-vote [codeId]="code.id"></code-vote>
+    </md-card>
+    <comments [codeId]="code.id"></comments>
 </div>

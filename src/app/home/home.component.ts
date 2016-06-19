@@ -34,25 +34,4 @@ import { XLarge } from './x-large';
 export class Home {
     // Set our default values
     // TypeScript public modifiers
-    tagName: string;
-    tagControl = new Control();
-    tags: Observable<any>;
-    tagList = new TagList();
-    constructor(public appState: AppState, public title: Title, private tagService: TagService) {
-        this.tags = this.tagControl.valueChanges
-            .debounceTime(500)
-            .distinctUntilChanged()
-            .switchMap(tagName => {
-                if (tagName === "") {
-                    return Observable.of([]);
-                } else {
-                    return this.tagService.getTags(tagName);
-                }
-            });
-    }
-
-    addTag(tag) {
-        this.tagName = "";
-        this.tagList.addTag(tag);
-    }
 }

@@ -19,6 +19,8 @@ export class CodeListComponent implements OnInit {
   @Input() tagList:TagList;
 
   codeList:Observable<any>;
+  showList:Observable<boolean>;
+  showEmptyMessage:Observable<boolean>;
 
   constructor(private codeService:CodeService, private router: Router) { }
 
@@ -28,6 +30,8 @@ export class CodeListComponent implements OnInit {
       .switchMap(tagIds => this.codeService.getAllCodes(tagIds));
   }
 
+    this.showList = this.codeList.map(codes => codes.length > 0);
+    this.showEmptyMessage = this.showList.map(showList => !showList);
   goToTheCode(code) {
       this.router.navigate(['CodeDetail', {id: code.id}]);
   }

@@ -18,6 +18,7 @@ export class CodeListComponent implements OnInit {
 
   codeList:Observable<any>;
   showList:Observable<boolean>;
+  showEmptyMessage:Observable<boolean>;
 
   constructor(private codeService:CodeService) { }
 
@@ -26,7 +27,8 @@ export class CodeListComponent implements OnInit {
       .map(tags => tags.map(tag => tag.id))
       .switchMap(tagIds => this.codeService.getAllCodes(tagIds));
 
-    this.showList = this.codeList.take(codes => {console.log(codes); return codes.length > 0})
+    this.showList = this.codeList.map(codes => codes.length > 0);
+    this.showEmptyMessage = this.showList.map(showList => !showList);
   }
 
 }

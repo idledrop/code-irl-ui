@@ -6,6 +6,7 @@ import { RouteConfig, Router } from '@angular/router-deprecated';
 
 import { AppState } from './app.service';
 import { Home } from './home';
+import { CodeCreateComponent } from './code-create';
 import { RouterActive } from './router-active';
 
 /*
@@ -27,11 +28,11 @@ import { RouterActive } from './router-active';
       <md-toolbar color="primary">
           <span>{{ name }}</span>
           <span class="fill"></span>
-          <button md-button router-active [routerLink]=" ['Index'] ">
-            Index
-          </button>
           <button md-button router-active [routerLink]=" ['Home'] ">
             Home
+          </button>
+          <button md-button router-active [routerLink]="['CodeCreate']">
+            Create Code Sample
           </button>
       </md-toolbar>
 
@@ -45,8 +46,8 @@ import { RouterActive } from './router-active';
   `
 })
 @RouteConfig([
-  { path: '/',      name: 'Index', component: Home, useAsDefault: true },
-  { path: '/home',  name: 'Home',  component: Home }
+  { path: '/code', name: 'CodeCreate', loader: () => require('es6-promise!./code-create')('CodeCreateComponent') },
+  { path: '/',  name: 'Home',  component: Home, useAsDefault: true }
   // Async load a component using Webpack's require with es6-promise-loader and webpack `require`
   // { path: '/about', name: 'About', loader: () => require('es6-promise!./about')('About') }
 ])

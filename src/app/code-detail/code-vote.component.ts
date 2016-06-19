@@ -6,7 +6,7 @@ import { CodeService } from '../shared';
   selector: 'code-vote',
   template: require('./code-vote.component.html')
 })
-export class CodeVoteComponent implements OnInit {
+export class CodeVoteComponent {
   @Input() codeId:number;
 
   constructor(

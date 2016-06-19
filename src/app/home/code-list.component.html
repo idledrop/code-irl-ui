@@ -1,15 +1,21 @@
 <md-card *ngIf="showList |async ">
-  <md-card-title>Matching Code Examples</md-card-title>
-  <md-list>
-    <md-list-item *ngFor="let code of codeList | async" (click)="goToTheCode(code)">
-      <div md-line><h3 style="display:inline;">{{getRepo(code)}}</h3> -- {{getFileName(code)}}</div>
-      <div md-line>
-        <button md-raised-button color="primary" *ngFor="let tag of code.tags">{{tag.name}}</button>
-        <md-text *ngIf="!code.tags" style="color:gray;">No tags</md-text>
-      </div>
-    </md-list-item>
-  </md-list>
+    <md-card-title>Matching Code Examples</md-card-title>
+    <md-list>
+        <div *ngFor="let code of codeList | async">
+            <md-list-item (click)="goToTheCode(code)" style="cursor:pointer;">
+                <button md-fab color="primary">{{ code.up - code.down }}</button>
+                <div style="display:inline-block">
+                    <div md-line><h3 style="display:inline;">{{getRepo(code)}}</h3> -- {{getFileName(code)}}</div>
+                    <div md-line>
+                        <button md-raised-button color="primary" *ngFor="let tag of code.tags">{{tag.name}}</button>
+                        <md-text *ngIf="!code.tags" style="color:gray;">No tags</md-text>
+                    </div>
+                </div>
+            </md-list-item>
+            <md-divider></md-divider>
+        </div>
+    </md-list>
 </md-card>
 <md-card *ngIf="showEmptyMessage|async">
-  <md-card-title>No Code Samples found</md-card-title>
+    <md-card-title>No Code Samples found</md-card-title>
 </md-card>
